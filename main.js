@@ -1,4 +1,4 @@
-// 1.
+// 1. 다음 코드를 es6 문법을 이용하여 재작성하시오
 let name = "noona's fruit store";
 let fruits = ["banana", "apple", "mango"];
 let address = "Seoul";
@@ -6,39 +6,47 @@ let address = "Seoul";
 let store = { name, fruits, address };
 console.log(store);
 
-// 2.
+// 2. es6 문법을 이용하여 다음과 같이 출력하시오
 console.log(
-  `제 가게 이름은 ${store.name} 입니다. 위치는 ${store.address} 에 있습니다`
+  `제 가게 이름은 ${store.name}입니다. 위치는 ${store.address}에 있습니다`
 );
 
-// 3.
-function calculate({ a, b, c }) {
-  return a + b + c;
+// 3.다음 코드를 Destructuring을 이용하여 해결하시오
+function calculate(obj) {
+  // 함수 안을 바꾸시오
+  // return obj.a + obj.b + obj.c;
+  let { a, b, c } = obj;
+  return console.log(a + b + c);
 }
-console.log(calculate({ a: 1, b: 2, c: 3 }));
 
-// 4.
-let name2 = "noona store";
-let fruits2 = ["banana", "apple", "mango"];
-let address2 = {
+calculate({ a: 1, b: 2, c: 3 });
+
+// 4. 다음 문제에 정답이 true가 나오게 하시오
+let name = "noona store";
+let fruits = ["banana", "apple", "mango"];
+let address = {
   country: "Korea",
   city: "Seoul",
 };
 
-function findStore({ name, address: { city } }) {
-  return name === "noona store" && city === "Seoul";
+function findStore(obj) {
+  let { name, fruits, address } = obj;
+  // let {name,address:{city}} = obj
+  // return name=="noona store" && city=="Seoul"
+  return obj.name === "noona store" && obj.address.city === "Seoul";
 }
-console.log(findStore({ name: name2, fruits: fruits2, address: address2 }));
+console.log(findStore({ name, fruits, address }));
 
-// 5.
+// 5.다음과 같이 프린트되게 코드를 바꾸시오
 function getNumber() {
-  let array = [1, 2, 3, 4, 5, 6];
+  let array = [1, 2, 3, 4, 5, 6]; // 여기서부터 바꾸시오
   let [first, , third, forth] = array;
   return { first, third, forth };
 }
 console.log(getNumber());
+//  결과값 { first: 1, third: 3, forth: 4 }
 
-// 6.
+// 6. 다음의 결과가 true가 되게 하시오
 function getCalendar(first, ...rest) {
   return (
     first === "January" &&
@@ -47,89 +55,29 @@ function getCalendar(first, ...rest) {
     rest[2] === undefined
   );
 }
-console.log(getCalendar("January", "Febuary", "March"));
+console.log(getCalendar("January", "Febuary", "March")); // 여기를 바꾸시오
 
-// 7.
+// 7. 두 어레이들중 최소값을 찾는 함수를 완성하시오
 function getMinimum() {
   let a = [45, 23, 78];
   let b = [54, 11, 9];
-  return Math.min(...a, ...b);
+  return Math.min(...a, ...b); // 여기를 바꾸시오
 }
 console.log(getMinimum());
 
-// 8.
-const sumNumber = () => {
+// 8. 다음의 함수를 화살표 함수로 바꾸시오
+
+function sumNumber() {
+  // 여기서부터 바꾸시오
   const sum = (a, b) => a + b;
   return sum(40, 10);
-};
+}
 console.log(sumNumber());
 
-// 9.
-const sumNumber2 = () =>
-  (
-    (a) => (b) => (c) =>
-      a + b + c
-  )(1)(2)(3);
-console.log(sumNumber2());
-
-// 배열함수
-let names = [
-  "Steven Paul Jobs",
-  "Bill Gates",
-  "Mark Elliot Zuckerberg",
-  "Elon Musk",
-  "Jeff Bezos",
-  "Warren Edward Buffett",
-  "Larry Page",
-  "Larry Ellison",
-  "Tim Cook",
-  "Lloyd Blankfein",
-];
-
-let firstQu = names.map((item) => item.toUpperCase());
-console.log(firstQu);
-
-let firstQu2 = names.map((item) => item.split(" ")[0]);
-console.log(firstQu2);
-
-let firstQu3 = names.map((item) =>
-  item
-    .split(" ")
-    .map((word) => word[0])
-    .join("")
-    .toUpperCase()
-);
-console.log(firstQu3);
-
-let secondQu = names.filter((item) => item.includes("a"));
-console.log(secondQu);
-
-let secondQu2 = names.filter((item) => item.toLowerCase().includes("a"));
-console.log(secondQu2);
-
-let some = names.some((item) => item.length >= 20);
-console.log(some);
-
-let some2 = names.some((item) => {
-  let firstName = item.split(" ")[0];
-  return firstName.toLowerCase().includes("p");
-});
-console.log(some2);
-
-let every = names.every((name) => name.length >= 20);
-console.log(every);
-
-let every2 = names.every((name) => name.toLowerCase().includes("a"));
-console.log(every2);
-
-let find = names.find((name) => name.length >= 20);
-console.log(find);
-
-let find2 = names.find((name) => name.split(" ").length > 2);
-console.log(find2);
-
-let findIndex = names.findIndex((name) => name.length >= 20);
-console.log(findIndex);
-
-let findIndex2 = names.findIndex((name) => name.split(" ").length > 2);
-console.log(findIndex2);
+// 9. 다음함수를 화살표 함수로 바꾸시오
+function sumNumber() {
+  //여기 아래부분 함수 정의를 바꾸시오
+  const addNumber = (a) => (b) => (c) => a + b + c;
+  return addNumber(1)(2)(3);
+}
+console.log(sumNumber());
